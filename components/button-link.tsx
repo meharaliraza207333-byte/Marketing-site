@@ -1,0 +1,34 @@
+import Link from "next/link";
+import type { ReactNode } from "react";
+import { ArrowUpRight } from "./icons";
+
+type Variant = "lime" | "ink" | "ghost" | "text";
+
+export function ButtonLink({
+  href,
+  children,
+  variant = "lime",
+  arrow = true,
+}: {
+  href: string;
+  children: ReactNode;
+  variant?: Variant;
+  arrow?: boolean;
+}) {
+  const styles: Record<Variant, string> = {
+    lime: "bg-lime text-ink hover:bg-ivory",
+    ink: "bg-ink text-ivory hover:bg-lime hover:text-ink",
+    ghost: "border border-ivory/25 bg-ivory/5 text-ivory hover:border-lime hover:text-lime",
+    text: "rounded-none border-b border-current px-0 py-1 hover:text-lime",
+  };
+
+  return (
+    <Link
+      href={href}
+      className={`inline-flex items-center gap-3 rounded-full px-5 py-3 text-sm font-semibold transition ${styles[variant]}`}
+    >
+      {children}
+      {arrow && <ArrowUpRight className="h-4 w-4" />}
+    </Link>
+  );
+}
