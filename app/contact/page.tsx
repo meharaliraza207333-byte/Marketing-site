@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Work With Me",
-  description: "Start a project with Mara Cole — email marketing and social media strategy inquiries.",
+  description: "Start a project with Myka Perez — email marketing and social media strategy inquiries.",
 };
 
 export default function ContactPage() {
@@ -29,6 +29,10 @@ export default function ContactPage() {
               {site.email}
             </a>
             <p className="mt-4 max-w-xs text-sm text-ink/60">Prefer a quick note? Email works beautifully, too.</p>
+            <div className="mt-8 rounded-2xl bg-paper p-5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink/45">Reply time</p>
+              <p className="mt-2 text-sm text-ink/75">Within two business days. Share as much context as you have—the brief can be messy.</p>
+            </div>
             <div className="mt-8 flex flex-col gap-2 text-sm">
               <a href={site.social.linkedin} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-ink/60">
                 LinkedIn ↗

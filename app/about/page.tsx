@@ -6,7 +6,7 @@ import { tools } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "About Mara Cole, independent email marketing specialist and social media strategist.",
+  description: "About Myka Perez, independent email marketing specialist and social media strategist.",
 };
 
 export default function AboutPage() {
@@ -28,7 +28,7 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <CampaignArt palette="lavender" label="Editorial abstract portrait placeholder" className="h-[min(70vw,560px)] min-h-[320px] rounded-[1.75rem]" />
           <div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/45">Hello, I&apos;m Mara</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/45">Hello, I&apos;m Myka</p>
             <h2 className="mt-3 font-serif text-[clamp(2.4rem,4vw,4.4rem)] leading-[0.95]">Placeholder bio, waiting for a true story.</h2>
             <p className="mt-5 max-w-xl text-ink/70">
               This space is intentionally ready for the specialist&apos;s real biography: the moments that shaped their point

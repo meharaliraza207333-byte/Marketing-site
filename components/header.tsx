@@ -23,8 +23,13 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
@@ -34,18 +39,18 @@ export function Header() {
         Skip to content
       </a>
       <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
-        <div className="pointer-events-auto mx-auto flex max-w-6xl items-center justify-between gap-3">
+        <div className="pointer-events-auto relative mx-auto flex max-w-6xl items-center justify-between gap-3">
           <Link
             href="/"
-            className="flex items-center gap-2 rounded-full bg-ivory/95 px-3 py-2 text-ink shadow-[0_10px_40px_rgba(0,0,0,.28)] backdrop-blur"
-            aria-label="Mara Cole home"
+            className="flex items-center gap-2 rounded-full bg-ivory/95 px-3 py-2 text-ink shadow-[0_10px_40px_rgba(0,0,0,.28)] backdrop-blur-md"
+            aria-label="Myka Perez home"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-lime text-sm font-bold text-ink">M</span>
-            <span className="pr-2 text-sm font-semibold tracking-tight">Mara Cole</span>
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-lime text-[10px] font-bold tracking-[-0.12em] text-ink">MP</span>
+            <span className="pr-2 text-sm font-semibold tracking-tight">Myka Perez</span>
           </Link>
 
           <nav
-            className="hidden items-center rounded-full bg-ivory/95 p-1.5 text-ink shadow-[0_10px_40px_rgba(0,0,0,.28)] backdrop-blur md:flex"
+            className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center rounded-full bg-ivory/95 p-1.5 text-ink shadow-[0_10px_40px_rgba(0,0,0,.28)] backdrop-blur-md md:flex"
             aria-label="Primary navigation"
           >
             {links.map(([name, href]) => (
@@ -76,6 +81,7 @@ export function Header() {
             onClick={() => setOpen((value) => !value)}
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
+            aria-controls="mobile-nav"
           >
             <span className="flex flex-col gap-1.5">
               <span className={`block h-px w-4 bg-ink transition ${open ? "translate-y-1 rotate-45" : ""}`} />
@@ -87,9 +93,14 @@ export function Header() {
 
       {open && (
         <nav
-          className="fixed inset-0 z-40 flex flex-col justify-end bg-ink/96 px-6 pb-10 pt-24 text-ivory md:hidden"
+          id="mobile-nav"
+          className="fixed inset-0 z-40 flex flex-col justify-end bg-ink/97 px-6 pb-10 pt-24 text-ivory backdrop-blur-md md:hidden"
           aria-label="Mobile navigation"
         >
+          <Link href="/" className="flex items-center justify-between border-b border-ivory/15 py-4 font-serif text-4xl">
+            Home
+            <ArrowUpRight className="h-6 w-6 text-lime" />
+          </Link>
           {links.map(([name, href]) => (
             <Link
               key={href}

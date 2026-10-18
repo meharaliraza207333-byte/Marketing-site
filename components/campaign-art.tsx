@@ -39,6 +39,11 @@ export function CampaignArt({
         <span className="art-rule" />
         <span className="art-caption">{caption || copy.caption}</span>
       </div>
+      <div className="art-preview" aria-hidden="true">
+        <div className="art-preview-bar"><span /><span /><span /><b>CAMPAIGN VIEW</b></div>
+        <div className="art-preview-image"><i /><i /><i /></div>
+        <div className="art-preview-copy"><strong>New story, same good taste.</strong><span /><span className="short" /></div>
+      </div>
       <span className="art-chip">✳</span>
     </div>
   );

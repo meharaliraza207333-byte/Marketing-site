@@ -30,6 +30,10 @@ export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Partial<Record<Fields, string>>>({});
 
+  const onChange = () => {
+    if (Object.keys(errors).length) setErrors({});
+  };
+
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const nextErrors = validate(event.currentTarget);
@@ -64,7 +68,7 @@ export function ContactForm() {
     "mt-2 w-full appearance-none border-0 border-b border-ink/25 bg-transparent py-3 text-base text-ink outline-none transition placeholder:text-ink/35 focus:border-ink";
 
   return (
-    <form className="max-w-3xl" onSubmit={submit} noValidate>
+    <form className="max-w-3xl" onSubmit={submit} onChange={onChange} noValidate>
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Your name" name="name" error={errors.name}>
           <input name="name" autoComplete="name" placeholder="First + last name" aria-invalid={!!errors.name} aria-describedby={errors.name ? "name-error" : undefined} className={fieldClass} />

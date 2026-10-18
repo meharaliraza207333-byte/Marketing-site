@@ -7,7 +7,7 @@ export function ServiceCard({
   service: { number: string; title: string; copy: string; items: string[] };
 }) {
   return (
-    <article className="grid gap-8 border-t border-ivory/15 py-8 md:grid-cols-2">
+    <article className="grid gap-8 border-t border-ivory/15 py-10 transition md:grid-cols-2 md:hover:border-lime/40">
       <div>
         <span className="font-mono text-[11px] text-lime">{service.number}</span>
         <h3 className="mt-3 max-w-md font-serif text-[clamp(2rem,3vw,3.1rem)] leading-[0.95]">{service.title}</h3>
@@ -16,8 +16,10 @@ export function ServiceCard({
         <p className="max-w-md text-ivory/70">{service.copy}</p>
         <ul className="mt-6 grid gap-2 sm:grid-cols-2">
           {service.items.map((item) => (
-            <li key={item} className="flex items-center gap-2 text-sm">
-              <span className="text-lime">✳</span>
+            <li key={item} className="flex items-center gap-2 text-sm text-ivory/85">
+              <span className="text-lime" aria-hidden="true">
+                ✳
+              </span>
               {item}
             </li>
           ))}

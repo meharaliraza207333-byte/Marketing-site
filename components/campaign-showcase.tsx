@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { projects } from "@/lib/data";
 import { CampaignArt } from "./campaign-art";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "./icons";
@@ -11,27 +11,42 @@ export function CampaignShowcase() {
   const [index, setIndex] = useState(0);
   const current = slides[index];
 
-  const go = (direction: number) => {
-    setIndex((value) => (value + direction + slides.length) % slides.length);
-  };
+  const go = useCallback(
+    (direction: number) => {
+      setIndex((value) => (value + direction + slides.length) % slides.length);
+    },
+    [slides.length],
+  );
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "ArrowRight") go(1);
+      if (event.key === "ArrowLeft") go(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [go]);
 
   return (
-    <section className="relative" aria-label="Featured campaign concepts">
-      <div className="overflow-hidden rounded-[1.75rem] border border-ivory/12 bg-ivory/4 shadow-[0_30px_80px_rgba(0,0,0,.35)]">
+    <section className="relative" aria-label="Featured campaign concepts" aria-roledescription="carousel">
+      <div className="pointer-events-none absolute -right-6 top-8 hidden h-full w-[92%] rounded-[1.75rem] border border-ivory/8 bg-ivory/4 lg:block" />
+      <div className="pointer-events-none absolute -right-3 top-4 hidden h-full w-[96%] rounded-[1.75rem] border border-ivory/10 bg-ivory/[0.03] lg:block" />
+
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-ivory/12 bg-ivory/[0.04] shadow-[0_30px_80px_rgba(0,0,0,.35)]">
         <CampaignArt
           palette={current.palette}
           kicker={current.cover.kicker}
           headline={current.cover.headline}
           caption={current.cover.caption}
           label={`${current.title} campaign visual`}
-          className="h-[min(58vw,520px)] min-h-[340px]"
+          className="h-[min(62vw,480px)] min-h-[300px] sm:min-h-[340px]"
         />
         <div className="flex items-end justify-between gap-4 p-5" aria-live="polite">
           <div className="min-w-0">
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-lime">
               {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")} · Concept
             </p>
-            <Link href={`/projects/${current.slug}`} className="mt-1 block font-serif text-3xl leading-none hover:text-lime">
+            <Link href={`/projects/${current.slug}`} className="mt-1 block truncate font-serif text-2xl leading-none hover:text-lime sm:text-3xl">
               {current.title}
             </Link>
             <p className="mt-2 max-w-sm text-sm text-ivory/65">{current.description}</p>

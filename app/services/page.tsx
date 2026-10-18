@@ -28,9 +28,17 @@ export default function ServicesPage() {
 
       <section className="bg-ivory px-6 py-20 text-ink sm:px-10 lg:px-16">
         <div className="mx-auto max-w-6xl">
-          {services.map((service) => (
-            <article key={service.number} className="grid gap-6 border-t border-ink/12 py-10 last:border-b md:grid-cols-[7rem_1.1fr_1fr]">
-              <span className="font-mono text-[11px] text-ink/45">{service.number}</span>
+          {services.map((service, index) => (
+            <article
+              key={service.number}
+              className="grid gap-6 border-t border-ink/12 py-10 last:border-b md:grid-cols-[7rem_1.1fr_1fr] md:transition-colors md:hover:bg-ink/[0.03]"
+            >
+              <div>
+                {index === 0 || services[index - 1].group !== service.group ? (
+                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink/40">{service.group}</p>
+                ) : null}
+                <span className="font-mono text-[11px] text-ink/45">{service.number}</span>
+              </div>
               <h2 className="font-serif text-[clamp(1.8rem,3vw,2.8rem)] leading-[0.95]">{service.title}</h2>
               <p className="max-w-md text-ink/70">{service.copy}</p>
             </article>

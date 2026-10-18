@@ -24,8 +24,8 @@ export function Footer() {
         </Link>
 
         <div className="mt-16 flex flex-col gap-8 border-t border-ivory/12 pt-8 md:flex-row md:items-center md:justify-between">
-          <Link href="/" className="flex items-center gap-2" aria-label="Mara Cole home">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-lime text-sm font-bold text-ink">M</span>
+          <Link href="/" className="flex items-center gap-2" aria-label="Myka Perez home">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-lime text-[10px] font-bold tracking-[-0.12em] text-ink">MP</span>
             <span className="text-sm font-semibold">{site.name}</span>
           </Link>
           <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-ivory/70" aria-label="Footer">

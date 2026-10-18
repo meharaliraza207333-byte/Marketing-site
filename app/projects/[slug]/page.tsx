@@ -21,6 +21,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
   const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
   const index = projects.findIndex((item) => item.slug === project.slug);
+  const previous = projects[(index - 1 + projects.length) % projects.length];
   const next = projects[(index + 1) % projects.length];
 
   return (
@@ -148,12 +149,15 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      <nav className="flex justify-between border-t border-ivory/12 px-6 py-8 sm:px-10 lg:px-16" aria-label="Case studies">
-        <Link href="/projects" className="inline-flex items-center gap-2 text-sm hover:text-lime">
+      <nav className="flex flex-col gap-4 border-t border-ivory/12 px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16" aria-label="Case studies">
+        <Link href={`/projects/${previous.slug}`} className="inline-flex items-center gap-2 text-sm hover:text-lime">
+          <ArrowLeft className="h-4 w-4" /> {previous.title}
+        </Link>
+        <Link href="/projects" className="text-sm text-ivory/50 hover:text-lime">
           All projects
         </Link>
         <Link href={`/projects/${next.slug}`} className="inline-flex items-center gap-2 text-sm hover:text-lime">
-          Next: {next.title} <ArrowRight className="h-4 w-4" />
+          {next.title} <ArrowRight className="h-4 w-4" />
         </Link>
       </nav>
     </>

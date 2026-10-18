@@ -3,7 +3,7 @@ import { PortfolioGrid } from "@/components/portfolio-grid";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Selected email, automation, social, and content strategy concepts from Mara Cole.",
+  description: "Selected email, automation, social, and content strategy concepts from Myka Perez.",
 };
 
 export default function ProjectsPage() {

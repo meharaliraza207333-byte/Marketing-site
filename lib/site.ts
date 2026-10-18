@@ -1,8 +1,8 @@
 export const site = {
-  name: "Mara Cole",
+  name: "Myka Perez",
   role: "Email & Social Marketing Specialist",
-  email: "hello@maracole.studio",
-  url: "https://maracole.studio",
+  email: "hello@mykaperez.studio",
+  url: "https://mykaperez.studio",
   tagline: "Make Your Brand Impossible to Ignore.",
   description:
     "Independent email marketing specialist and social media strategist helping considered brands earn attention in inboxes and feeds.",
