@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, Instrument_Serif, Plus_Jakarta_Sans } from "next/font/go
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { Preloader } from "@/components/preloader";
 import { site } from "@/lib/site";
 
 const sans = Plus_Jakarta_Sans({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
       <body className="font-sans antialiased">
+        <Preloader />
         <Header />
         <main id="content">{children}</main>
         <Footer />

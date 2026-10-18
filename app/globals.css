@@ -99,6 +99,67 @@
   }
 }
 
+@keyframes bob-orb {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes hero-ambient-drift {
+  0% {
+    transform: translate(-3%, -2%) scale(0.96);
+  }
+  100% {
+    transform: translate(3%, 2%) scale(1.06);
+  }
+}
+
+@keyframes hero-ambient-drift-reverse {
+  0% {
+    transform: translate(2%, 2%) scale(1.05);
+  }
+  100% {
+    transform: translate(-2%, -2%) scale(0.97);
+  }
+}
+
+@keyframes pulse-live {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(213, 255, 85, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.85;
+    box-shadow: 0 0 0 5px rgba(213, 255, 85, 0);
+  }
+}
+
+.ambient-drift-1 {
+  animation: hero-ambient-drift 24s ease-in-out infinite alternate;
+}
+
+.ambient-drift-2 {
+  animation: hero-ambient-drift-reverse 28s ease-in-out infinite alternate;
+}
+
+.pulse-dot {
+  animation: pulse-live 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 .campaign-art {
   position: relative;
   overflow: hidden;
@@ -141,6 +202,7 @@
   right: -16%;
   width: 58%;
   height: 58%;
+  animation: bob-orb 8s ease-in-out infinite alternate;
 }
 
 .art-orb.two {
@@ -149,6 +211,7 @@
   width: 42%;
   height: 42%;
   background: rgba(246, 243, 236, 0.55);
+  animation: bob-orb 10s ease-in-out infinite alternate-reverse;
 }
 
 .art-letter {
@@ -201,6 +264,7 @@
   font-size: clamp(1.6rem, 4vw, 3.4rem);
   transform: rotate(14deg);
   z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .art-preview {
@@ -216,6 +280,7 @@
   color: var(--color-ink);
   box-shadow: 9px 11px 0 rgba(23, 23, 23, 0.75);
   transform: rotate(4deg);
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .art-preview-bar {
@@ -274,6 +339,17 @@
 .project-card:hover .campaign-art .art-letter {
   transform: rotate(-3deg) translateY(-4px);
   box-shadow: 18px 22px 0 rgba(23, 23, 23, 0.88);
+}
+
+.project-card:hover .art-chip,
+.campaign-art:hover .art-chip {
+  transform: rotate(32deg) scale(1.08);
+}
+
+.project-card:hover .art-preview,
+.campaign-art:hover .art-preview {
+  transform: rotate(2deg) translateY(-3px);
+  box-shadow: 13px 15px 0 rgba(23, 23, 23, 0.75);
 }
 
 @media (hover: hover) {
