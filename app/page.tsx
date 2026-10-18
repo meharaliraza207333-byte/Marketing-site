@@ -1,6 +1,7 @@
 import { ButtonLink } from "@/components/button-link";
 import { CampaignShowcase } from "@/components/campaign-showcase";
 import { FinalCta } from "@/components/final-cta";
+import { PeopleMarketing } from "@/components/people-marketing";
 import { ProjectCard } from "@/components/project-card";
 import { ServiceCard } from "@/components/service-card";
 import { processSteps, projects, serviceGroups, tools } from "@/lib/data";
@@ -168,6 +169,8 @@ export default function Home() {
           </ol>
         </div>
       </section>
+
+      <PeopleMarketing />
 
       <section className="px-6 py-20 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-6xl">
